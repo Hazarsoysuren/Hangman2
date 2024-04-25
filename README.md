@@ -1,32 +1,118 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hangman
+Hangman is a Python terminal game, which can be ran on ide's like VScode and Replit for example.
 
-Welcome,
+Users can try to beat the game by guessing which word the machine has generated, There limited guesses and if you get the word correct you win.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
 
-## Reminders
+## How to play
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+This Hangman is a guessing game made with python. The machine picks out a word out of the wordlist file, and the player tries to guess it by suggesting letters within a certain number of guesses. 
 
-## Creating the Heroku app
+It looks like this. ![Image of hangman game](https://github.com/Hazarsoysuren/Hangman/blob/main/images/hangman.png?raw=true)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Start the Game: Launch the Hangman game either by running the Python script or executing the executable file, depending on how it's been packaged.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+Guess the Word: The game will display a series of dashes representing the letters of the hidden word. Guess letters one at a time by typing them on your keyboard.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+Correct Guesses: If your guessed letter is in the word, the game will reveal all occurrences of that letter in the word. You can continue guessing more letters.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+Incorrect Guesses: If your guessed letter is not in the word, a part of the hangman will be drawn. Be careful! If too many incorrect guesses are made, the hangman will be completed, and you lose the game.
 
-Connect your GitHub repository and deploy as normal.
+Complete the Word: Keep guessing letters until you either guess the entire word correctly or make too many incorrect guesses and the hangman is complete.
 
-## Constraints
+Win or Lose: If you guess the word correctly before the hangman is complete, you win! Otherwise, if the hangman is completed, you lose.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+Play Again: After the game ends, you can choose to play again and try your luck at guessing a new word.
 
----
 
-Happy coding!
+## Strategy
+
+I made flowchart to plan each step to get this project functioning and to know the logic behind it, heres an image of it ![image of flowchart](https://github.com/Hazarsoysuren/Hangman/blob/main/images/flowchart.png?raw=true)
+
+## Data model 
+The data model in this Hangman project involves several components:
+
+Word List:
+
+- The word_list variable contains a list of words from which the Hangman game randomly selects a word for the player to guess. This data structure provides a pool of words for gameplay variation.
+
+Chosen Word:
+
+- The chosen_word variable stores the word randomly chosen from the word_list. This word serves as the target for the player to guess throughout the game.
+
+Word Length:
+
+- The word_length variable holds the length of the chosen_word, which is used to determine the number of blanks displayed to the player at the beginning of the game.
+
+Display:
+
+- The display list represents the current state of the word being guessed by the player. Initially, it contains underscores representing unrevealed letters, and as correct letters are guessed, underscores are replaced with the corresponding letters.
+
+Lives:
+
+- The lives variable tracks the number of attempts remaining for the player to guess the word. The game typically ends when the player exhausts all their lives.
+
+End of Game Flag:
+
+- The end_of_game variable is a boolean flag that indicates whether the game has concluded. It becomes True when either the player wins by guessing the word correctly or loses by running out of lives.
+
+## Features 
+Word List Customization:
+
+- Users can customize the word list by adding, removing, or modifying words, allowing for a personalized gameplay experience.
+
+ASCII Art Logo:
+
+- A visually appealing ASCII art logo is displayed at the start of the game, adding to the thematic presentation.
+
+Dynamic Display of Guessed Letters:
+
+- The display dynamically updates to reveal correctly guessed letters within the word, helping players track their progress.
+
+Visual Representation of Hangman:
+
+- A visual representation of the Hangman's gallows and drawing progressively changes with each incorrect guess, adding suspense to the game.
+
+Win/Loss Conditions:
+
+- Players win upon correctly guessing the word and lose if they exhaust all their lives without guessing correctly.
+
+Modular Architecture:
+
+- The project adopts a modular architecture, separating concerns into distinct files/modules for word list management, ASCII art display, and game logic, promoting code organization and maintainability.
+
+## Testing
+I have tested this code through this [online website](www.online-ide.com) without any errors.
+
+As well for no problems showing in my ide
+
+### Bugs
+**Solved bugs**
+- I figured out to later to wrap the game code around a while loop to let the player i have more lives to continue
+
+**Remaining bugs**
+- No bugs remaining
+
+### Validator testing
+- Online-ide
+      - No errors were returned
+
+
+## Credits 
+I made the ascii art by getting help from this [website](https://www.instructables.com/ASCII-Art/)
+
+I also got much help from [W3schools](https://www.w3schools.com) and [geeksforgeeks](www.geeksforgeeks.org)
+
+## Deployment
+This project was deployed using Code Institute's mock terminal for Heroku
+- Steps for deployment
+   - Fork or clone this repository
+   - Create a new Heroku app
+   - Set the buildbacks to python and NodeJS in that order
+   - Link the Heroku app to the repository
+   - Click on **Deploy**
+
+
+## Credits
+- Code institute for the deployment terminal
+- Iam also very grateful for my mentor to helping me with this project
