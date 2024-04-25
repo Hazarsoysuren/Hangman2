@@ -1,0 +1,6 @@
+backcall==0.2.0
+docopt==0.6.2
+ipython==8.12.3
+pickleshare==0.7.5
+pipreqs==0.5.0
+yarg==0.1.9
