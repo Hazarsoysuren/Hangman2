@@ -8,13 +8,15 @@ Users can try to beat the game by guessing which word the machine has generated,
 
 This Hangman is a guessing game made with python. The machine picks out a word out of the wordlist file, and the player tries to guess it by suggesting letters within a certain number of guesses. 
 
-It looks like this. ![Image of hangman game](https://github.com/Hazarsoysuren/Hangman/blob/main/images/hangman.png?raw=true)
+It looks like this.
+
+![Image of hangman game](https://github.com/Hazarsoysuren/Hangman2/blob/main/images/hangman.png?raw=true)
 
 Start the Game: Launch the Hangman game either by running the Python script or executing the executable file, depending on how it's been packaged.
 
 Guess the Word: The game will display a series of dashes representing the letters of the hidden word. Guess letters one at a time by typing them on your keyboard.
 
-Correct Guesses: If your guessed letter is in the word, the game will reveal all occurrences of that letter in the word. You can continue guessing more letters.
+Correct Guesses: If your guessed letter is in the word, the game will fill in the blanks of that letter in the word. You can continue guessing more letters.
 
 Incorrect Guesses: If your guessed letter is not in the word, a part of the hangman will be drawn. Be careful! If too many incorrect guesses are made, the hangman will be completed, and you lose the game.
 
@@ -22,12 +24,11 @@ Complete the Word: Keep guessing letters until you either guess the entire word 
 
 Win or Lose: If you guess the word correctly before the hangman is complete, you win! Otherwise, if the hangman is completed, you lose.
 
-Play Again: After the game ends, you can choose to play again and try your luck at guessing a new word.
 
 
 ## Strategy
 
-I made flowchart to plan each step to get this project functioning and to know the logic behind it, heres an image of it ![image of flowchart](https://github.com/Hazarsoysuren/Hangman/blob/main/images/flowchart.png?raw=true)
+I made flowchart to plan each step to get this project functioning and to know the logic behind it, heres an image of it ![image of flowchart](https://github.com/Hazarsoysuren/Hangman2/blob/main/images/strategi.png?raw=true)
 
 ## Data model 
 The data model in this Hangman project involves several components:
