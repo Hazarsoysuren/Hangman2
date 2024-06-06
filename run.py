@@ -1,63 +1,71 @@
-from hangman_art import logo
+from hangman_art import logo, stages
+from hangman_words import word_list
 import random
 
-# TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
-from hangman_words import word_list
+def play_game():
+    chosen_word = random.choice(word_list)
+    word_length = len(chosen_word)
+    
+    end_of_game = False
+    lives = 6
 
-chosen_word = random.choice(word_list)
-word_length = len(chosen_word)
+    # Print the logo at the start of the game
+    print(logo)
 
-end_of_game = False
-lives = 6
+    # Create blanks
+    display = ["_" for _ in range(word_length)]
+    guessed_letters = set()
 
-# TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
-print(logo)
+    while not end_of_game:
+        # Defensive programming to ensure person enters one alphabetic character
+        character = ""
+        while character == '':
+            guess = input("Guess a letter: ").lower().strip()
+            if guess.isalpha() and len(guess) == 1:
+                character = guess
+            else:
+                print('No, you need to enter one alphabetic character!')
 
-
-# Create blanks
-display = []
-for _ in range(word_length):
-    display += "_"
-
-while not end_of_game:
-    # Defensive programming to ensure person enters one alphabetic character
-    character = ""
-    while character == '':
-        guess = input("Guess a letter: ").lower().strip()
-        if guess.isalpha() and len(guess) == 1:
-            character = guess
+        # If the user has entered a letter they've already guessed, print the letter and let them know.
+        if guess in guessed_letters:
+            print(f"You've already guessed {guess}")
         else:
-            print('No, you need to enter one alphabetic character!')
+            guessed_letters.add(guess)
 
-    # TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
-    if guess in display:
-        print(f"You've already guessed {guess}")
+        # Check guessed letter
+        for position in range(word_length):
+            letter = chosen_word[position]
+            if letter == guess:
+                display[position] = letter
 
-    # Check guessed letter
-    for position in range(word_length):
-        letter = chosen_word[position]
-        # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
-        if letter == guess:
-            display[position] = letter
+        # Check if user is wrong.
+        if guess not in chosen_word:
+            # If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
+            print(f"You guessed {guess}, that's not in the word. You lose a life.")
+            lives -= 1
+            if lives == 0:
+                end_of_game = True
+                print("You lose.")
+                print(f"The word was: {chosen_word}")
 
-    # Check if user is wrong.
-    if guess not in chosen_word:
-        # TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
-        print(f"You guessed {guess}, that's not in the word. You lose a life.")
+        # Join all the elements in the list and turn it into a String.
+        print(f"{' '.join(display)}")
 
-        lives -= 1
-        if lives == 0:
+        # Display guessed letters
+        print(f"Guessed letters: {', '.join(sorted(guessed_letters))}")
+
+        # Check if user has got all letters.
+        if "_" not in display:
             end_of_game = True
-            print("You lose.")
+            print("You win.")
 
-    # Join all the elements in the list and turn it into a String.
-    print(f"{' '.join(display)}")
+        # Print the current stage of the hangman
+        print(stages[lives])
 
-    # Check if user has got all letters.
-    if "_" not in display:
-        end_of_game = True
-        print("You win.")
-
-    # TODO-2: - Import the stages from hangman_art.py and make this error go away.
-    from hangman_art import stages
-    print(stages[lives])
+# Main game loop
+while True:
+    play_game()
+    replay = input("Do you want to play again? Type 'yes' or 'no': ").lower()
+    if replay != 'yes':
+        break
+print("Thanks for playing! Goodbye.")
